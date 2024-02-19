@@ -2,7 +2,6 @@ import Image from "next/image";
 
 export default function Home() {
     return (
-
         <div>
 
             <div className="h-[100px] mt-[50px]">
@@ -20,7 +19,6 @@ export default function Home() {
             </div>
 
         </div>
-
     );
 }
 
