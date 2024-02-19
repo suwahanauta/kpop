@@ -34,7 +34,7 @@ export default function Home() {
       </div>
 
       <div className="h-[100px] w-[100px] bg-blue-300 absolute bottom-[60px] right-[60px] text-[60px] rounded-full">
-        <a href="/groups/create" className="text-center text-white">+</a>
+        <a href="/groups/create" className="block text-center text-white ">+</a>
       </div>
 
     </div>
