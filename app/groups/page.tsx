@@ -2,10 +2,9 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-
     <div>
 
-      <div className="h-[calc(100vh/10)] w-screen bg-yellow-100">
+      <div className="h-[calc(100vh/10)] w-screen">
         <h1 className="font-bold text-[30px] text-center leading-[calc(100vh/10)]">Kpopグループ一覧</h1>
       </div>
 
@@ -34,11 +33,10 @@ export default function Home() {
       </div>
 
       <div className="h-[100px] w-[100px] bg-blue-300 absolute bottom-[60px] right-[60px] text-[60px] rounded-full">
-        <a href="/groups/create" className="block text-center text-white ">+</a>
+        <a href="/groups/create" className="block text-center text-white">+</a>
       </div>
 
     </div>
-
   );
 }
 
