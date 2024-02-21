@@ -1,14 +1,22 @@
 'use client'
 
+import { GET } from "@/app/api/route";
 import Image from "next/image";
 
 import { useRef } from "react";
+import { json } from "stream/consumers";
 
 export default function Home() {
 
     const textRef = useRef<HTMLInputElement>(null);
 
     const imageRef = useRef<HTMLInputElement>(null);
+
+    function info() {
+        fetch('http://localhost:3000/api/create_group',{method: 'POST'})
+            .then((res) => console.log(res))
+            .catch(() => alert("error"))
+    }
 
     return (
         <div>
@@ -24,7 +32,15 @@ export default function Home() {
             </div>
 
             <div>
-                <button onClick={() => { console.log(textRef.current?.value, imageRef.current?.value) }} className="bg-pink-300 font-bold h-[calc(100vh/10)] w-[calc(100vw/4)] rounded-full absolute bottom-[100px] left-[calc(100vw/8*3)] text-white text-[20px]">グループ作成</button>
+                <button
+                    onClick={() => {
+                        console.log(textRef.current?.value, imageRef.current?.value)
+                        info()
+                    }}
+                    className="bg-pink-300 font-bold h-[calc(100vh/10)] w-[calc(100vw/4)] rounded-full absolute bottom-[100px] left-[calc(100vw/8*3)] text-white text-[20px]"
+                >
+                    グループ作成
+                </button>
             </div>
 
         </div>
