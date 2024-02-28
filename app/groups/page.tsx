@@ -9,7 +9,7 @@ type GroupInfo = {
 export default function Home() {
 
   const groups: GroupInfo[] = [{ groupName: "NewJeans", imageUrl: "/newjeans.jpg" }, { groupName: "LE SSELAFIM", imageUrl: "/lesserafim.jpeg" }, { groupName: "(G)I-DLE", imageUrl: "/gidol.jpg" }, { groupName: "TWICE", imageUrl: "/twice.jpg" }]
-  
+
   return (
 
     <div>
@@ -19,15 +19,15 @@ export default function Home() {
       </div>
 
       <div className="flex">
-        
-      {groups.map(
-        (value) => {
-          return <div className="h-[calc(100vw/4)] w-[calc(100vw/4)] p-[30px]">
-          <img className="h-4/5 w-full" src={value.imageUrl} />
-          <p className="h-1/5 w-full text-center text-[20px] leading-{h-5/1}">{value.groupName}</p>
-        </div>
-        }
-      )}
+
+        {groups.map(
+          (value) => {
+            return <div className="h-[calc(100vw/4)] w-[calc(100vw/4)] p-[30px]">
+              <img className="h-4/5 w-full" src={value.imageUrl} />
+              <p className="h-1/5 w-full text-center text-[20px] leading-{h-5/1}">{value.groupName}</p>
+            </div>
+          }
+        )}
 
       </div>
 
