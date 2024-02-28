@@ -1,7 +1,17 @@
 import Image from "next/image";
 
+type GroupInfo = {
+  groupName: string
+  imageUrl: string
+}
+
+
 export default function Home() {
+
+  const groups: GroupInfo[] = [{ groupName: "NewJeans", imageUrl: "/newjeans.jpg" }, { groupName: "LE SSELAFIM", imageUrl: "/lesserafim.jpeg" }, { groupName: "(G)I-DLE", imageUrl: "/gidol.jpg" }, { groupName: "TWICE", imageUrl: "/twice.jpg" }]
+
   return (
+
     <div>
 
       <div className="h-[calc(100vh/10)] w-screen">
@@ -10,25 +20,14 @@ export default function Home() {
 
       <div className="flex">
 
-        <div className="h-[calc(100vw/4)] w-[calc(100vw/4)] p-[30px]">
-          <img className="h-4/5 w-full" src='/newjeans.jpg' />
-          <p className="h-1/5 w-full text-center text-[20px] leading-{h-5/1}">NewJeans</p>
-        </div>
-
-        <div className="h-[calc(100vw/4)] w-[calc(100vw/4)] p-[30px]">
-          <img className="h-4/5 w-full" src='/lesserafim.jpeg' />
-          <p className="h-1/5 w-full text-center text-[20px]">LE SSERAFIM</p>
-        </div>
-
-        <div className="h-[calc(100vw/4)] w-[calc(100vw/4)] p-[30px]">
-          <img className="h-4/5 w-full" src='/gidol.jpg' />
-          <p className="h-1/5 w-full text-center text-[20px]">(G)I-DLE</p>
-        </div>
-
-        <div className="h-[calc(100vw/4)] w-[calc(100vw/4)] p-[30px]">
-          <img className="h-4/5 w-full" src='/twice.jpg' />
-          <p className="h-1/5 w-full text-center text-[20px]">TWICE</p>
-        </div>
+        {groups.map(
+          (value) => {
+            return <div className="h-[calc(100vw/4)] w-[calc(100vw/4)] p-[30px]">
+              <img className="h-4/5 w-full" src={value.imageUrl} />
+              <p className="h-1/5 w-full text-center text-[20px] leading-{h-5/1}">{value.groupName}</p>
+            </div>
+          }
+        )}
 
       </div>
 
