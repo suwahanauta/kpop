@@ -2,24 +2,33 @@
 
 import Image from "next/image";
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 import { GET } from "../api/route";
 
 type GroupInfo = {
-  id: number
-  groupName: string
-  imageUrl: string
+  name: string
+  image_url: string
 }
 
 export default function Home() {
 
-  useEffect(() => {
-    fetch('http://localhost:3000/api/get_groups', {method: 'GET'})
-    .then((res) => console.log(res))
-    .catch(() => alert("error"))
-  }, [])
 
-  const groups: GroupInfo[] = [{id: 1, groupName: "NewJeans", imageUrl: "/newjeans.jpg" }, { id: 2,groupName: "LE SSELAFIM", imageUrl: "/lesserafim.jpeg" }, { id: 3,groupName: "(G)I-DLE", imageUrl: "/gidol.jpg" }, { id: 4,groupName: "TWICE", imageUrl: "/twice.jpg" }]
+  let [state, setState] = useState<GroupInfo[]>([])
+
+  state = []
+
+  useEffect(() => {
+
+    const fetchFirst = async () => {
+      const res = await fetch('http://localhost:3000/api/get_groups', { method: 'GET' })
+      const data = await res.json()
+      setState(data.groups)
+    }
+
+    fetchFirst()
+
+  }, [])
 
   return (
     <div>
@@ -30,13 +39,14 @@ export default function Home() {
 
       <div className="flex">
 
-        {groups.map(
-          (value) => {
-            return <div key={value.id} className="h-[calc(100vw/4)] w-[calc(100vw/4)] p-[30px]">
-              <img className="h-4/5 w-full" src={value.imageUrl} />
-              <p className="h-1/5 w-full text-center text-[20px] leading-{h-5/1}">{value.groupName}</p>
+        {state.map(
+          (value, index) => {
+            return <div key={index} className="h-[calc(100vw/4)] w-[calc(100vw/4)] p-[30px]">
+              <img className="h-4/5 w-full" src={value.image_url} />
+              <p className="h-1/5 w-full text-center text-[20px] leading-{h-5/1}">{value.name}</p>
             </div>
           }
+
         )}
 
       </div>
