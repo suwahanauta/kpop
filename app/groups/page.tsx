@@ -16,8 +16,6 @@ export default function Home() {
 
   let [state, setState] = useState<GroupInfo[]>([])
 
-  state = []
-
   useEffect(() => {
 
     const fetchFirst = async () => {
