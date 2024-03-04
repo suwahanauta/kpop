@@ -13,7 +13,6 @@ type GroupInfo = {
 
 export default function Home() {
 
-
   let [state, setState] = useState<GroupInfo[]>([])
 
   useEffect(() => {
@@ -40,7 +39,11 @@ export default function Home() {
         {state.map(
           (value, index) => {
             return <div key={index} className="h-[calc(100vw/4)] w-[calc(100vw/4)] p-[30px]">
-              <img onClick={ () => { console.log("⭐")}} className="h-4/5 w-full" src={value.image_url} />
+              <img onClick={ () => { 
+
+                window.location.href = `/groups/${index+1}`
+
+              }} className="h-4/5 w-full" src={value.image_url} />
               <p className="h-1/5 w-full text-center text-[20px] leading-{h-5/1}">{value.name}</p>
             </div>
           }
